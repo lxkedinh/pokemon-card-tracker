@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import CardGrid from 'components/CardGrid/index.svelte';
+	import AddCardButton from 'components/AddCardButton.svelte';
+	import WebsiteHeading from 'components/WebsiteHeading.svelte';
+</script>
+
+<AddCardButton />
+<div class="flex items-center justify-center">
+	<CardGrid />
+</div>
