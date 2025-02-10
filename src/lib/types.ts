@@ -4,3 +4,10 @@ export type CardBrief = {
   name: string;
   image: string;
 }
+
+export type Card = {
+  id: string;
+  name: string;
+  image: string;
+  set: string;
+}

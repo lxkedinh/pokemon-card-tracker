@@ -4,9 +4,12 @@
 	import Input from 'components/ui/input/input.svelte';
 	import { SearchOutline } from 'flowbite-svelte-icons';
 	import CardGrid from 'components/CardGrid/index.svelte';
+	import type { CardBrief } from '$lib/types';
+	import CardPreview from 'components/Card/CardPreview.svelte';
 
 	let { form } = $props();
-	console.log(form);
+	let results = form as CardBrief[];
+	console.log(results);
 </script>
 
 <form class="flex gap-4" method="POST">
@@ -27,4 +30,10 @@
 	</Button>
 </form>
 
-<CardGrid />
+<CardGrid>
+	{#each results as card, i (i)}
+		{#if card.image}
+			<CardPreview src={card.image + '/high.webp'} alt={card.name} />
+		{/if}
+	{/each}
+</CardGrid>
