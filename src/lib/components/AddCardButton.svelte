@@ -17,7 +17,7 @@
 	variant="ghost"
 	href="/search"
 	size="icon"
-	class="fixed bottom-4 right-4 z-[999] size-12 rounded-full bg-ctp-surface1 active:bg-ctp-surface0 xl:hidden"
+	class="fixed bottom-4 right-4 z-[999] size-12 rounded-full bg-ctp-surface1 hover:bg-ctp-surface2 active:bg-ctp-surface0 xl:hidden"
 >
 	<PlusOutline class="size-6 text-ctp-rosewater" />
 </Button>

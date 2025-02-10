@@ -7,11 +7,27 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
+export const baseApiUrl = 'https://api.tcgdex.net/v2/en';
+
 type FlyAndScaleParams = {
 	y?: number;
 	x?: number;
 	start?: number;
 	duration?: number;
+};
+
+export const scaleConversion = (
+	valueA: number,
+	scaleA: [number, number],
+	scaleB: [number, number]
+) => {
+	const [minA, maxA] = scaleA;
+	const [minB, maxB] = scaleB;
+
+	const percentage = (valueA - minA) / (maxA - minA);
+	const valueB = percentage * (maxB - minB) + minB;
+
+	return valueB;
 };
 
 export const flyAndScale = (
@@ -20,20 +36,6 @@ export const flyAndScale = (
 ): TransitionConfig => {
 	const style = getComputedStyle(node);
 	const transform = style.transform === "none" ? "" : style.transform;
-
-	const scaleConversion = (
-		valueA: number,
-		scaleA: [number, number],
-		scaleB: [number, number]
-	) => {
-		const [minA, maxA] = scaleA;
-		const [minB, maxB] = scaleB;
-
-		const percentage = (valueA - minA) / (maxA - minA);
-		const valueB = percentage * (maxB - minB) + minB;
-
-		return valueB;
-	};
 
 	const styleToString = (
 		style: Record<string, number | string | undefined>
