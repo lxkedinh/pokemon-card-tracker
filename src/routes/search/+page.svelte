@@ -1,15 +1,13 @@
 <script lang="ts">
-	import WebsiteHeading from 'components/WebsiteHeading.svelte';
 	import Button from 'components/ui/button/button.svelte';
 	import Input from 'components/ui/input/input.svelte';
 	import { SearchOutline } from 'flowbite-svelte-icons';
 	import CardGrid from 'components/CardGrid/index.svelte';
-	import type { CardBrief } from '$lib/types';
+	import type { PokemonCardBrief } from '$lib/types';
 	import CardPreview from 'components/Card/CardPreview.svelte';
 
 	let { form } = $props();
-	let results = form as CardBrief[];
-	console.log(results);
+	let results = form as PokemonCardBrief[];
 </script>
 
 <form class="flex gap-4" method="POST">

@@ -9,7 +9,6 @@
 
 <button
 	class="relative h-full w-full"
-	onclick={() => console.log('clicked')}
 	onmouseover={() => (hovered = true)}
 	onfocus={() => (hovered = true)}
 	onblur={() => (hovered = false)}

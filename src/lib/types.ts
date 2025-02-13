@@ -1,11 +1,11 @@
-export type CardBrief = {
+export type PokemonCardBrief = {
   id: string;
   localId: string;
   name: string;
   image: string;
 }
 
-export type Card = {
+export type PokemonCard = {
   id: string;
   name: string;
   image: string;

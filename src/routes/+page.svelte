@@ -1,15 +1,16 @@
 <script lang="ts">
 	import CardGrid from 'components/CardGrid/index.svelte';
 	import AddCardButton from 'components/AddCardButton.svelte';
-	import WebsiteHeading from 'components/WebsiteHeading.svelte';
-	import type { Card } from '$lib/types.js';
+	import type { PokemonCard } from '$lib/types.js';
+	import Card from '$lib/components/Card/index.svelte';
 
 	let { data } = $props();
+	let cards: PokemonCard[] = data.cards;
 </script>
 
 <AddCardButton />
 <CardGrid>
-	{#each data.cards as card, i (i)}
-		<p>{card.name}</p>
+	{#each cards as card, i (i)}
+		<Card {...card} img={card.image} />
 	{/each}
 </CardGrid>
