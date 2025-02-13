@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { src, alt } = $props();
+	let { id, name, image } = $props();
 	import { CheckOutline } from 'flowbite-svelte-icons';
 	import Button from 'components/ui/button/button.svelte';
 	let hovered = $state(false);
@@ -14,7 +14,7 @@
 	onblur={() => (hovered = false)}
 	onmouseout={() => (hovered = false)}
 >
-	<img {src} {alt} class={['h-full transition-all', { hovered }]} />
+	<img src={image + '/high.webp'} alt={name} class={['h-full transition-all', { hovered }]} />
 	<Button
 		variant="ghost"
 		size="icon"
