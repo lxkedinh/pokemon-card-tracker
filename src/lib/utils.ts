@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
-export const baseApiUrl = 'https://api.tcgdex.net/v2/en';
+export const PokemonApiUrl = 'https://api.tcgdex.net/v2/en';
 
 type FlyAndScaleParams = {
 	y?: number;
