@@ -1,13 +1,18 @@
 <script lang="ts">
 	let { src, alt } = $props();
 	import { CheckOutline } from 'flowbite-svelte-icons';
+	import { toast } from 'svelte-sonner';
 	import Button from 'components/ui/button/button.svelte';
+	import { PokemonApiUrl } from '$lib/utils';
 	let hovered = $state(false);
 
-	function addCard() {}
+	function addCard() {
+		const response = await fetch(`${PokemonApiUrl}/cards/`)		
+	}
 </script>
 
-<button
+<div
+	role="img"
 	class="relative h-full w-full"
 	onmouseover={() => (hovered = true)}
 	onfocus={() => (hovered = true)}
@@ -18,11 +23,12 @@
 	<Button
 		variant="ghost"
 		size="icon"
-		class={`${hovered ? 'opacity-100' : 'opacity-0'} absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full text-ctp-green transition-all hover:bg-ctp-surface2 hover:text-ctp-green`}
+		onclick={() => toast('Hello world!')}
+		class={`${hovered ? 'opacity-100' : 'opacity-0'} absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full text-ctp-green transition-all hover:bg-ctp-surface2 hover:text-ctp-green active:bg-ctp-surface0`}
 	>
 		<CheckOutline class="size-10" />
 	</Button>
-</button>
+</div>
 
 <style>
 	img.hovered {
