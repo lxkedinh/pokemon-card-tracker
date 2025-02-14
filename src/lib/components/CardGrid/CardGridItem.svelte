@@ -1,13 +1,13 @@
 <script lang="ts">
-	import Card from '$lib/components/Card/index.svelte';
+	let { card } = $props();
 	import * as Dialog from '$lib/components/ui/dialog';
+	import CardImage from 'components/Card/CardImage.svelte';
 	import CardInfo from 'components/Card/CardInfo.svelte';
-	let { src, name } = $props();
 </script>
 
 <Dialog.Root>
 	<Dialog.Trigger>
-		<Card {src} {name} />
+		<CardImage {...card} />
 	</Dialog.Trigger>
-	<CardInfo {src} {name} />
+	<CardInfo {card} />
 </Dialog.Root>

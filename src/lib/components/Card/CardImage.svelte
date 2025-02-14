@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { scaleConversion } from '$lib/utils';
 
-	let { img, name, set, id } = $props();
+	let { image, name, set } = $props();
 
 	const maxRotation = 30;
 
@@ -23,7 +23,7 @@
 		brightness = scaleConversion(event.offsetY, [0, width], [1.2, 0.7]);
 	}
 
-	function onmouseleave(event: MouseEvent) {
+	function onmouseleave(_: MouseEvent) {
 		rotX = 0;
 		rotY = 0;
 		brightness = 1;
@@ -31,7 +31,7 @@
 </script>
 
 <div class="card" {onmousemove} {onmouseleave} role="img">
-	<img {style} src={img + '/high.webp'} alt={name + ' ' + set} width="{width}px" />
+	<img {style} src={image + '/high.webp'} alt={name + ' ' + set} width="{width}px" />
 </div>
 
 <style>

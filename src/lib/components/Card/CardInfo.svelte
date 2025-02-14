@@ -1,16 +1,15 @@
 <script lang="ts">
 	import * as Dialog from '$lib/components/ui/dialog';
-	import Card from '$lib/components/Card/index.svelte';
-	let { src, name } = $props();
+	import CardImage from './CardImage.svelte';
+	let { card } = $props();
 </script>
 
-<Dialog.Content class="w-3/4 rounded-lg">
-	<Dialog.Header>
-		<Card {src} {name} />
-		<Dialog.Title>Are you sure absolutely sure?</Dialog.Title>
+<Dialog.Content class="flex w-3/4 flex-col justify-between rounded-lg">
+	<Dialog.Header class="flex items-center">
+		<CardImage {...card} />
+		<Dialog.Title>{card.name}</Dialog.Title>
 		<Dialog.Description>
-			This action cannot be undone. This will permanently delete your account and remove your data
-			from our servers.
+			Set: {card.set}
 		</Dialog.Description>
 	</Dialog.Header>
 </Dialog.Content>

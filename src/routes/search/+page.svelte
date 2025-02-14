@@ -31,7 +31,7 @@
 <CardGrid>
 	{#each results as card, i (i)}
 		{#if card.image}
-			<CardPreview src={card.image + '/high.webp'} alt={card.name} />
+			<CardPreview id={card.id} image={card.image} name={card.name} />
 		{/if}
 	{/each}
 </CardGrid>

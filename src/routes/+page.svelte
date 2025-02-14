@@ -2,7 +2,9 @@
 	import CardGrid from 'components/CardGrid/index.svelte';
 	import AddCardButton from 'components/AddCardButton.svelte';
 	import type { PokemonCard } from '$lib/types.js';
-	import Card from '$lib/components/Card/index.svelte';
+	import CardImage from '$lib/components/Card/CardImage.svelte';
+	import CardInfo from 'components/Card/CardInfo.svelte';
+	import CardGridItem from 'components/CardGrid/CardGridItem.svelte';
 
 	let { data } = $props();
 	let cards: PokemonCard[] = data.cards;
@@ -11,6 +13,6 @@
 <AddCardButton />
 <CardGrid>
 	{#each cards as card, i (i)}
-		<Card {...card} img={card.image} />
+		<CardGridItem {card} />
 	{/each}
 </CardGrid>

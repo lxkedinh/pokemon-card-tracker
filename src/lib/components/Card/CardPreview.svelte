@@ -6,8 +6,20 @@
 	import { PokemonApiUrl } from '$lib/utils';
 	let hovered = $state(false);
 
-	function addCard() {
-		const response = await fetch(`${PokemonApiUrl}/cards/`)		
+	async function addCard() {
+		try {
+			const response = await fetch(`${PokemonApiUrl}/cards/${id}`);
+			if (response.status != 200) {
+				throw new Error('Could not add card. Try again.');
+			}
+
+			const data = await response.json();
+			console.log(data);
+			toast('Added card!');
+		} catch (err) {
+			console.log(err);
+			toast('Couldn not add card. Try again.');
+		}
 	}
 </script>
 
@@ -23,7 +35,7 @@
 	<Button
 		variant="ghost"
 		size="icon"
-		onclick={() => toast('Hello world!')}
+		onclick={() => addCard()}
 		class={`${hovered ? 'opacity-100' : 'opacity-0'} absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full text-ctp-green transition-all hover:bg-ctp-surface2 hover:text-ctp-green active:bg-ctp-surface0`}
 	>
 		<CheckOutline class="size-10" />

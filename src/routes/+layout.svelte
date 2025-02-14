@@ -8,7 +8,7 @@
 </script>
 
 <Toaster />
-<div class="flex flex-col items-center gap-4">
+<div class="my-4 flex flex-col items-center gap-4">
 	<WebsiteHeading />
 	<Button variant="ghost" size="icon" class="hover:bg-ctp-surface2 active:bg-ctp-surface0" href="/"
 		><HomeSolid class="size-10 text-ctp-sapphire" /></Button
