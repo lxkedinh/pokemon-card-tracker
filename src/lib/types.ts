@@ -11,6 +11,22 @@ export type PokemonCard = {
   set: string;
 }
 
+export type PokemonCardResponse = {
+  id: string;
+  name: string;
+  image: string;
+  set: {
+    id: string;
+    name: string;
+    logo: string;
+    symbol: string;
+    cardCount: {
+      total: number;
+      official: number;
+    };
+  };
+}
+
 export type Json =
   | string
   | number

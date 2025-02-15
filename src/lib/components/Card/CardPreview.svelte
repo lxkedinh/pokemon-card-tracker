@@ -4,6 +4,8 @@
 	import { toast } from 'svelte-sonner';
 	import Button from 'components/ui/button/button.svelte';
 	import { PokemonApiUrl } from '$lib/utils';
+	import type { PokemonCardResponse } from '$lib/types';
+	import { supabase } from '$lib/supabaseClient';
 	let hovered = $state(false);
 
 	async function addCard() {
@@ -13,12 +15,29 @@
 				throw new Error('Could not add card. Try again.');
 			}
 
-			const data = await response.json();
-			console.log(data);
+			const data = (await response.json()) as PokemonCardResponse;
+			const { error } = await supabase.from('cards').insert([
+				{
+					id: data.id,
+					name: data.name,
+					image: data.image,
+					set: data.set.name
+				}
+			]);
+
+			if (error) {
+				throw new Error('');
+			}
+			
 			toast('Added card!');
 		} catch (err) {
-			console.log(err);
-			toast('Couldn not add card. Try again.');
+			if (err instanceof Error) {
+				console.log(err.message);
+				toast(err.message);
+			} else {
+				console.log(err);
+				toast('Could not add card. Try again.');
+			}
 		}
 	}
 </script>

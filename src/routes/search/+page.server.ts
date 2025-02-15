@@ -8,5 +8,27 @@ export const actions = {
     const query = data.get('query');
     const response = await fetch(`${PokemonApiUrl}/cards?name=${query}`);
     return await response.json() as PokemonCardBrief[];
+  },
+  add: async ({ request, fetch }) => {
+    const formData = await request.formData();
+    const id = formData.get('id');
+    const response = await fetch(`${PokemonApiUrl}/cards/${id}`);
+    if (response.status != 200) {
+      throw new Error('Could not add card. Try again.');
+    }
+
+    const data = (await response.json()) as PokemonCardResponse;
+    const { error } = await supabase.from('cards').insert([
+      {
+        id: data.id,
+        name: data.name,
+        image: data.image,
+        set: data.set.name
+      }
+    ]);
+
+    if (error) {
+      throw new Error('');
+    }
   }
 } satisfies Actions;
